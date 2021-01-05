@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp build/staging:build/staging/* Main
+web: java $JAVA_OPTS -cp build/staging:build/staging/* codingwithme.java.telegram.bot.sample.Main
