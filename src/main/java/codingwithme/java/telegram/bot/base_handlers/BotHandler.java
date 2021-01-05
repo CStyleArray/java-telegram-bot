@@ -1,7 +1,10 @@
 package codingwithme.java.telegram.bot.base_handlers;
 
+import com.pengrad.telegrambot.Callback;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.*;
+import com.pengrad.telegrambot.request.BaseRequest;
+import com.pengrad.telegrambot.response.BaseResponse;
 
 public abstract class BotHandler {
 
@@ -32,6 +35,13 @@ public abstract class BotHandler {
         return bot;
     }
 
+    public <T extends BaseRequest<T, R>, R extends BaseResponse> R execute(BaseRequest<T, R> request) {
+        return bot.execute(request);
+    }
+
+    public <T extends BaseRequest<T, R>, R extends BaseResponse> void execute(T request, Callback<T, R> callback) {
+        bot.execute(request, callback);
+    }
      protected void routeUpdate(Update update) {
          System.out.println(update.message());
         if (isStartMessage(update.message())) {
